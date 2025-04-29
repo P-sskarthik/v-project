@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { Products } from './app/Products';
+import NavBar from './app/NavBar';
+import { CartProvider } from './app/Context/CartContext';
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -25,16 +28,18 @@ function App() {
   }, []);
 
   return (
+<CartProvider>
     <div className="flex flex-col">
-      
+      <NavBar/>
       {isLoaded ? (
-        products.map((prod) => {
-          return <Products item={prod}  />
-})
+        products.map((prod) => (
+        <Products item={prod}  />
+))
       ) : (
         <p>Loading...</p>
       )}
     </div>
+    </CartProvider>
   );
 }
 

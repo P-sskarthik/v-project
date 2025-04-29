@@ -1,6 +1,9 @@
 import React from 'react'
-
+import { useContext } from 'react'
+import { CartContext } from './Context/CartContext'
 export const Products = ({item}) => {
+
+const {handleCount} = useContext(CartContext)
   return (
     <div className="flex flex-row items-center  justify-around h-[250px] bg-white  rounded-lg shadow-md m-2 p-2">
     
@@ -11,7 +14,9 @@ export const Products = ({item}) => {
       </div>
       <div className="flex flex-col gap-[0.5]">
          <span className="font-bold text-xl&">{item.price}</span>
-        <button className="  hover:bg-yellow-600 text-black bg-yellow-500 font-bold py-2 px-4 rounded">Add to cart &nbsp;&nbsp; 🛒</button>
+        <button
+        onClick ={handleCount}
+        className=" hover:bg-yellow-600 text-black bg-yellow-500 font-bold py-2 px-4 rounded">Add to cart &nbsp;&nbsp; 🛒</button>
       </div>
     
     </div>
